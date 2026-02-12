@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - JEBP Construction</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .service-detail-card {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            margin-top: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon-large {
+            font-size: 4rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-item {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .feature-item i {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-item h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin-top: 4rem;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section .btn {
+            margin-top: 1.5rem;
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+        }
+        
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .category-tab {
+            padding: 0.8rem 2rem;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .category-tab:hover,
+        .category-tab.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .price-tag {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 700;
+            margin-top: 1rem;
+        }
+        
+        .service-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>JEBP<span>Construction</span></h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Services</h1>
+            <p>Quality construction solutions tailored to your needs</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-preview" style="padding-top: 2rem;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">What We Offer</span>
+                <h2>Comprehensive Construction Solutions</h2>
+                <p>From scaffolding to security doors, we've got you covered</p>
+            </div>
+            
+            <!-- Category Filter -->
+            <div class="category-tabs">
+                <button class="category-tab active" data-category="all">All Services</button>
+                <button class="category-tab" data-category="scaffold-wholesale">Scaffold Wholesale</button>
+                <button class="category-tab" data-category="scaffold-rental">Scaffold Rentals</button>
+                <button class="category-tab" data-category="security-doors">Security Doors</button>
+                <button class="category-tab" data-category="door-accessories">Door Accessories</button>
+            </div>
+            
+            <!-- Services Grid -->
+            <div class="services-grid" id="servicesGrid"></div>
+        </div>
+    </section>
+
+    <!-- Detailed Services -->
+    <section class="services-detail">
+        <div class="container">
+            <!-- Scaffold Wholesale -->
+            <div class="service-detail-card" id="scaffold-wholesale">
+                <div class="service-icon-large">
+                    <i class="fas fa-building"></i>
+                </div>
+                <h2>Scaffold Wholesale</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">Premium scaffolding materials at wholesale prices. Perfect for large-scale construction projects, contractors, and distributors.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-layer-group"></i>
+                        <h4>Steel Scaffolding</h4>
+                        <p>Heavy-duty steel frames, braces, and planks</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-cube"></i>
+                        <h4>Aluminum Scaffolding</h4>
+                        <p>Lightweight, corrosion-resistant aluminum systems</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-th"></i>
+                        <h4>Frame Scaffolding</h4>
+                        <p>Standard frame systems for various heights</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-puzzle-piece"></i>
+                        <h4>System Scaffolding</h4>
+                        <p>Modular ringlock and cuplock systems</p>
+                    </div>
+                </div>
+                
+                <div class="service-meta">
+                    <span class="price-tag">Contact for wholesale pricing</span>
+                    <a href="contact.html" class="btn btn-primary">Request Quote</a>
+                </div>
+            </div>
+            
+            <!-- Scaffold Rentals -->
+            <div class="service-detail-card" id="scaffold-rental">
+                <div class="service-icon-large">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h2>Scaffold Rentals</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">Flexible rental options for short-term and long-term projects. Daily, weekly, and monthly rates available.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-sun"></i>
+                        <h4>Daily Rentals</h4>
+                        <p>Starting from GHS 500/day</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-calendar-week"></i>
+                        <h4>Weekly Rentals</h4>
+                        <p>15% discount on weekly rates</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h4>Monthly Rentals</h4>
+                        <p>30% discount on monthly rates</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-truck"></i>
+                        <h4>Delivery & Setup</h4>
+                        <p>Professional installation available</p>
+                    </div>
+                </div>
+                
+                <div class="service-meta">
+                    <span class="price-tag">From GHS 500/day</span>
+                    <a href="contact.html" class="btn btn-primary">Rent Now</a>
+                </div>
+            </div>
+            
+            <!-- Security Doors -->
+            <div class="service-detail-card" id="security-doors">
+                <div class="service-icon-large">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h2>Security Doors</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">Heavy-duty security doors designed to protect your home and business. Custom sizes and designs available.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-shield"></i>
+                        <h4>Steel Doors</h4>
+                        <p>Reinforced steel construction</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-fire"></i>
+                        <h4>Fire Rated</h4>
+                        <p>Up to 90 minutes fire resistance</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-volume-mute"></i>
+                        <h4>Sound Proof</h4>
+                        <p>Acoustic insulation available</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-paint-brush"></i>
+                        <h4>Custom Designs</h4>
+                        <p>Various colors and finishes</p>
+                    </div>
+                </div>
+                
+                <div class="service-meta">
+                    <span class="price-tag">Starting at GHS 2,500</span>
+                    <a href="contact.html" class="btn btn-primary">Get Quote</a>
+                </div>
+            </div>
+            
+            <!-- Door Accessories -->
+            <div class="service-detail-card" id="door-accessories">
+                <div class="service-icon-large">
+                    <i class="fas fa-door-open"></i>
+                </div>
+                <h2>Door Accessories</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">Complete range of high-quality door hardware and accessories for all door types.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-bolt"></i>
+                        <h4>Hinges & Handles</h4>
+                        <p>Premium stainless steel hardware</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-lock"></i>
+                        <h4>Locks & Latches</h4>
+                        <p>High-security locking systems</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-arrow-left"></i>
+                        <h4>Door Closers</h4>
+                        <p>Adjustable hydraulic closers</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-bars"></i>
+                        <h4>Security Bars</h4>
+                        <p>Additional security reinforcement</p>
+                    </div>
+                </div>
+                
+                <div class="service-meta">
+                    <span class="price-tag">From GHS 100</span>
+                    <a href="contact.html" class="btn btn-primary">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Need a Custom Solution?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Contact our team for personalized quotes and expert advice on your construction needs.</p>
+            <a href="contact.html" class="btn btn-secondary">Request Consultation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>JEBP<span>Construction</span></h3>
+                    <p>Quality construction services in Accra, Ghana since 2020.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="services.html#scaffold-wholesale">Scaffold Wholesale</a></li>
+                        <li><a href="services.html#scaffold-rental">Scaffold Rentals</a></li>
+                        <li><a href="services.html#security-doors">Security Doors</a></li>
+                        <li><a href="services.html#door-accessories">Door Accessories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Kwabenya Main Road, Accra, Ghana</li>
+                        <li><i class="fas fa-phone"></i> +233 24 031 1953</li>
+                        <li><i class="fas fa-envelope"></i> info@jebpconstruction.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 JEBP Construction. All rights reserved. | Founded by Justice Essoun Baah</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+        }
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Load services dynamically
+        async function loadServices() {
+            const servicesGrid = document.getElementById('servicesGrid');
+            if (!servicesGrid) return;
+            
+            try {
+                const response = await fetch('/api/services');
+                const services = await response.json();
+                
+                servicesGrid.innerHTML = services.map(service => `
+                    <div class="service-card" data-category="${service.category}">
+                        <i class="${service.icon}"></i>
+                        <h3>${service.name}</h3>
+                        <p>${service.description}</p>
+                        <ul class="service-features">
+                            ${service.features.slice(0, 3).map(feature => `
+                                <li><i class="fas fa-check"></i> ${feature}</li>
+                            `).join('')}
+                        </ul>
+                        <p class="service-price">${service.price}</p>
+                        <a href="contact.html" class="btn btn-outline" style="margin-top: 1rem;">Inquire Now</a>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading services:', error);
+                servicesGrid.innerHTML = '<p>Unable to load services. Please refresh the page.</p>';
+            }
+        }
+
+        // Category filtering
+        function initCategoryFilters() {
+            const tabs = document.querySelectorAll('.category-tab');
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    const category = tab.dataset.category;
+                    
+                    serviceCards.forEach(card => {
+                        if (category === 'all' || card.dataset.category === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadServices();
+            setTimeout(initCategoryFilters, 500); // Wait for services to load
+        });
+    </script>
+</body>
+</html>
