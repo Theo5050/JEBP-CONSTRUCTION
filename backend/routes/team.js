@@ -19,13 +19,13 @@ router.post('/seed', async (req, res) => {
             {
                 name: 'Justice Essoun Baah',
                 position: 'Founder & CEO',
-                bio: 'Founded JEBP Construction in 2020 with a vision to provide quality construction services in Ghana.',
+                bio: 'Founded jebplan Construction in 2020 with a vision to provide quality construction services in Ghana.',
                 joinedYear: 2020,
                 founder: true,
                 social: {
                     linkedin: '#',
                     twitter: '#',
-                    email: 'justice@jebpconstruction.com'
+                    email: 'justice@jebplanconstruction.com'
                 }
             },
             {
@@ -37,7 +37,7 @@ router.post('/seed', async (req, res) => {
                 social: {
                     linkedin: '#',
                     twitter: '#',
-                    email: 'theophilus@jebpconstruction.com'
+                    email: 'theophilus@jebplanconstruction.com'
                 }
             },
             {
@@ -49,7 +49,7 @@ router.post('/seed', async (req, res) => {
                 social: {
                     linkedin: '#',
                     twitter: '#',
-                    email: 'stephen@jebpconstruction.com'
+                    email: 'stephen@jebplanconstruction.com'
                 }
             },
             {
@@ -61,7 +61,7 @@ router.post('/seed', async (req, res) => {
                 social: {
                     linkedin: '#',
                     twitter: '#',
-                    email: 'benjamin@jebpconstruction.com'
+                    email: 'benjamin@jebplanconstruction.com'
                 }
             }
         ];
