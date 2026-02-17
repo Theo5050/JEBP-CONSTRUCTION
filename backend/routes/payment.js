@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
-const Payment = require('../models/Payment.');
+const Payment = require('../models/Payment');
 
 // Initialize Paystack payment
 router.post('/initialize', async (req, res) => {
