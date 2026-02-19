@@ -3,48 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Make Payment - JEBPLAN Construction</title>
+    <title>Pay Online - JEBPLAN Construction</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .payment-container {
-            max-width: 600px;
-            margin: 100px auto;
-            padding: 2rem;
+            max-width: 700px;
+            margin: 100px auto 50px;
+            padding: 2.5rem;
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
         }
         
         .payment-header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
         
         .payment-header h2 {
             color: var(--primary);
+            font-size: 2.2rem;
             margin-bottom: 0.5rem;
         }
         
         .payment-header p {
             color: #666;
+            font-size: 1.1rem;
         }
         
-        .payment-methods {
-            display: flex;
-            justify-content: center;
+        .payment-methods-showcase {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2.5rem;
+            color: white;
+        }
+        
+        .payment-methods-showcase h3 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            color: white;
+        }
+        
+        .payment-icons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 1rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
+            margin-top: 1rem;
         }
         
-        .payment-methods img {
-            height: 35px;
-            opacity: 0.7;
-            transition: opacity 0.3s;
+        .payment-icon-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s, background 0.3s;
+            border: 1px solid rgba(255,255,255,0.2);
         }
         
-        .payment-methods img:hover {
-            opacity: 1;
+        .payment-icon-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.25);
+        }
+        
+        .payment-icon-card i {
+            font-size: 2.5rem;
+        }
+        
+        .payment-icon-card span {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .mtn-momo i {
+            color: #ffcc00;
+        }
+        
+        .vodafone i {
+            color: #da291c;
+        }
+        
+        .visa i {
+            color: #ffffff;
+        }
+        
+        .mastercard i {
+            color: #ffffff;
+        }
+        
+        .mastercard span {
+            background: linear-gradient(135deg, #f79e1b, #ff5f00);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        .payment-form {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
         }
         
         .form-group {
@@ -56,64 +126,31 @@
             margin-bottom: 0.5rem;
             font-weight: 600;
             color: var(--dark);
+            font-size: 0.95rem;
+        }
+        
+        .form-group label i {
+            color: var(--secondary);
+            margin-right: 0.5rem;
+            width: 20px;
         }
         
         .form-group input,
         .form-group select {
             width: 100%;
-            padding: 0.8rem;
+            padding: 0.8rem 1rem;
             border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 1rem;
-            transition: border-color 0.3s;
+            transition: all 0.3s;
+            background: white;
         }
         
         .form-group input:focus,
         .form-group select:focus {
             border-color: var(--secondary);
             outline: none;
-        }
-        
-        .payment-btn {
-            background: var(--primary);
-            color: white;
-            padding: 1rem;
-            border: none;
-            border-radius: 8px;
-            width: 100%;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        
-        .payment-btn:hover {
-            background: var(--secondary);
-        }
-        
-        .payment-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-        
-        .fee-note {
-            text-align: center;
-            font-size: 0.85rem;
-            color: #666;
-            margin-top: 1rem;
-        }
-        
-        .error-message {
-            background: #f8d7da;
-            color: #721c24;
-            padding: 0.8rem;
-            border-radius: 5px;
-            margin-bottom: 1rem;
-            display: none;
-        }
-        
-        .error-message.show {
-            display: block;
+            box-shadow: 0 0 0 3px rgba(230,184,0,0.2);
         }
         
         .quick-amounts {
@@ -124,19 +161,112 @@
         }
         
         .quick-amount {
-            background: var(--light);
-            border: 1px solid #ddd;
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
             padding: 0.5rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
+            border-radius: 30px;
+            font-weight: 600;
             font-size: 0.9rem;
+            cursor: pointer;
             transition: all 0.3s;
+            flex: 1 0 auto;
+            text-align: center;
         }
         
         .quick-amount:hover {
-            background: var(--secondary);
+            background: var(--primary);
             color: white;
-            border-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .payment-btn {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 12px;
+            width: 100%;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+        
+        .payment-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .payment-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .payment-btn i {
+            font-size: 1.3rem;
+        }
+        
+        .secure-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: #e8f5e9;
+            border-radius: 10px;
+            color: #2e7d32;
+        }
+        
+        .secure-badge i {
+            font-size: 1.5rem;
+        }
+        
+        .fee-note {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        .error-message {
+            background: #ffebee;
+            color: #c62828;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            display: none;
+            border-left: 4px solid #c62828;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        .error-message i {
+            margin-right: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .payment-container {
+                margin: 80px 1rem 30px;
+                padding: 1.5rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-icons-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
@@ -167,64 +297,110 @@
     <div class="container">
         <div class="payment-container">
             <div class="payment-header">
-                <h2>Pay Online Securely</h2>
-                <p>Pay via Mobile Money, Cards, or Bank Transfer</p>
-                <div class="payment-methods">
-                    <img src="https://paystack.com/assets/img/logos/mtn-momo.svg" alt="MTN MoMo">
-                    <img src="https://paystack.com/assets/img/logos/vodafone-cash.svg" alt="Vodafone Cash">
-                    <img src="https://paystack.com/assets/img/logos/visa.svg" alt="Visa">
-                    <img src="https://paystack.com/assets/img/logos/mastercard.svg" alt="Mastercard">
+                <h2><i class="fas fa-lock" style="color: var(--secondary); margin-right: 10px;"></i> Pay Online Securely</h2>
+                <p>Fast, safe, and convenient payments</p>
+            </div>
+
+            <!-- Payment Methods Showcase -->
+            <div class="payment-methods-showcase">
+                <h3><i class="fas fa-credit-card"></i> Accepted Payment Methods</h3>
+                <div class="payment-icons-grid">
+                    <div class="payment-icon-card mtn-momo">
+                        <i class="fas fa-mobile-alt"></i>
+                        <i class="fas fa-wifi"></i>
+                        <span>MTN MoMo</span>
+                    </div>
+                    <div class="payment-icon-card vodafone">
+                        <i class="fas fa-mobile-alt"></i>
+                        <i class="fas fa-bolt"></i>
+                        <span>Vodafone Cash</span>
+                    </div>
+                    <div class="payment-icon-card visa">
+                        <i class="fab fa-cc-visa"></i>
+                        <span>Visa</span>
+                    </div>
+                    <div class="payment-icon-card mastercard">
+                        <i class="fab fa-cc-mastercard"></i>
+                        <span>Mastercard</span>
+                    </div>
+                    <div class="payment-icon-card">
+                        <i class="fas fa-university"></i>
+                        <span>Bank Transfer</span>
+                    </div>
+                    <div class="payment-icon-card">
+                        <i class="fas fa-qrcode"></i>
+                        <span>QR Pay</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="error-message" id="errorMessage"></div>
+            <div class="error-message" id="errorMessage">
+                <i class="fas fa-exclamation-circle"></i>
+                <span></span>
+            </div>
 
-            <form id="paymentForm">
-                <div class="form-group">
-                    <label for="name">Full Name *</label>
-                    <input type="text" id="name" placeholder="Justice Essoun Baah" required>
+            <form id="paymentForm" class="payment-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name"><i class="fas fa-user"></i> Full Name *</label>
+                        <input type="text" id="name" placeholder="Justice Essoun Baah" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone"><i class="fas fa-phone"></i> Phone Number</label>
+                        <input type="tel" id="phone" placeholder="024 XXX XXXX">
+                    </div>
                 </div>
-                
+
                 <div class="form-group">
-                    <label for="email">Email Address *</label>
+                    <label for="email"><i class="fas fa-envelope"></i> Email Address *</label>
                     <input type="email" id="email" placeholder="justice@jebplanconstruction.com" required>
                 </div>
                 
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" placeholder="024 XXX XXXX">
-                </div>
-                
-                <div class="form-group">
-                    <label for="service">Payment For</label>
-                    <select id="service">
-                        <option value="Scaffold Rental">Scaffold Rental</option>
-                        <option value="Scaffold Wholesale">Scaffold Wholesale</option>
-                        <option value="Exterior Door">Exterior Door</option>
-                        <option value="Interior Door">Interior Door</option>
-                        <option value="Glass Door">Glass Door</option>
-                        <option value="Door Accessories">Door Accessories</option>
-                        <option value="Deposit">Deposit</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="amount">Amount (GHS) *</label>
-                    <div class="quick-amounts">
-                        <span class="quick-amount" data-amount="500">GHS 500</span>
-                        <span class="quick-amount" data-amount="1000">GHS 1,000</span>
-                        <span class="quick-amount" data-amount="2500">GHS 2,500</span>
-                        <span class="quick-amount" data-amount="5000">GHS 5,000</span>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="service"><i class="fas fa-tag"></i> Payment For</label>
+                        <select id="service">
+                            <option value="Scaffold Rental">Scaffold Rental</option>
+                            <option value="Scaffold Wholesale">Scaffold Wholesale</option>
+                            <option value="Exterior Door">Exterior Door</option>
+                            <option value="Interior Door">Interior Door</option>
+                            <option value="Glass Door">Glass Door</option>
+                            <option value="Water Closet">Water Closet (WC)</option>
+                            <option value="Sink">Sink / Washbasin</option>
+                            <option value="Tap">Tap / Faucet</option>
+                            <option value="Jacuzzi">Jacuzzi / Whirlpool</option>
+                            <option value="Door Accessories">Door Accessories</option>
+                            <option value="Deposit">Deposit</option>
+                        </select>
                     </div>
-                    <input type="number" id="amount" placeholder="e.g., 2500" min="1" step="0.01" required>
+                    
+                    <div class="form-group">
+                        <label for="amount"><i class="fas fa-money-bill-wave"></i> Amount (GHS) *</label>
+                        <div class="quick-amounts">
+                            <span class="quick-amount" data-amount="500">GHS 500</span>
+                            <span class="quick-amount" data-amount="1000">GHS 1,000</span>
+                            <span class="quick-amount" data-amount="2500">GHS 2,500</span>
+                            <span class="quick-amount" data-amount="5000">GHS 5,000</span>
+                        </div>
+                        <input type="number" id="amount" placeholder="Enter amount" min="1" step="0.01" required>
+                    </div>
                 </div>
 
                 <button type="submit" class="payment-btn" id="payBtn">
-                    Pay with Paystack
+                    <i class="fas fa-lock"></i>
+                    <span>Pay Securely with Paystack</span>
+                    <i class="fas fa-arrow-right"></i>
                 </button>
                 
+                <div class="secure-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Your payment information is encrypted and secure</span>
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                
                 <div class="fee-note">
-                    <i class="fas fa-lock"></i> Secure payment. 1.95% transaction fee applies [citation:2]
+                    <i class="fas fa-info-circle"></i> 1.95% transaction fee applies. You'll be redirected to Paystack's secure checkout.
                 </div>
             </form>
         </div>
@@ -244,6 +420,7 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="services.html">Services</a></li>
                         <li><a href="team.html">Team</a></li>
+                        <li><a href="payment.html">Pay Online</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -251,8 +428,12 @@
                     <ul class="contact-info">
                         <li><i class="fas fa-phone"></i> +233 24 031 1953</li>
                         <li><i class="fas fa-envelope"></i> info@jebplanconstruction.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Kwabenya Main Road, Accra</li>
                     </ul>
                 </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 JEBPLAN Construction. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -269,6 +450,14 @@
             });
         }
 
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
         // Quick amount buttons
         document.querySelectorAll('.quick-amount').forEach(button => {
             button.addEventListener('click', () => {
@@ -280,6 +469,7 @@
         const paymentForm = document.getElementById('paymentForm');
         const payBtn = document.getElementById('payBtn');
         const errorMessage = document.getElementById('errorMessage');
+        const errorText = errorMessage.querySelector('span');
 
         paymentForm.addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -296,23 +486,31 @@
 
             // Validate
             if (!name || !email || !amount) {
-                errorMessage.textContent = 'Please fill in all required fields';
+                errorText.textContent = 'Please fill in all required fields';
                 errorMessage.classList.add('show');
                 return;
             }
 
             if (amount < 1) {
-                errorMessage.textContent = 'Amount must be at least GHS 1';
+                errorText.textContent = 'Amount must be at least GHS 1';
+                errorMessage.classList.add('show');
+                return;
+            }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                errorText.textContent = 'Please enter a valid email address';
                 errorMessage.classList.add('show');
                 return;
             }
 
             // Disable button to prevent double submission
             payBtn.disabled = true;
-            payBtn.textContent = 'Processing...';
+            payBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
 
             try {
-                // Initialize payment with our backend
+                // Initialize payment with backend
                 const response = await fetch('/api/payments/initialize', {
                     method: 'POST',
                     headers: {
@@ -329,7 +527,7 @@
 
                 const data = await response.json();
 
-                if (data.status && data.data.authorization_url) {
+                if (response.ok && data.status && data.data.authorization_url) {
                     // Redirect to Paystack checkout
                     window.location.href = data.data.authorization_url;
                 } else {
@@ -338,10 +536,10 @@
 
             } catch (error) {
                 console.error('Payment error:', error);
-                errorMessage.textContent = error.message || 'Failed to process payment. Please try again.';
+                errorText.textContent = error.message || 'Failed to process payment. Please try again.';
                 errorMessage.classList.add('show');
                 payBtn.disabled = false;
-                payBtn.textContent = 'Pay with Paystack';
+                payBtn.innerHTML = '<i class="fas fa-lock"></i> Pay Securely with Paystack <i class="fas fa-arrow-right"></i>';
             }
         });
     </script>
