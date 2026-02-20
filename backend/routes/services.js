@@ -57,7 +57,15 @@ router.post('/seed', async (req, res) => {
                 category: 'door-accessories',
                 features: ['Hinges & Handles', 'Locks & Latches', 'Door Closers', 'Security Bars'],
                 price: 'From GHS 100'
-            }
+            },
+            {
+                name: 'Bathroom and Kitchen Accessories',
+                description: 'Wide selection of bathroom and kitchen accessories to enhance your space. Stylish and functional.',
+                icon: 'fas fa-bath',        
+                category: 'bathroom-kitchen-accessories',
+                features: ['Jaccuzi', 'water closet', 'Faucets & Sinks', 'Cabinet Hardware'],
+                price: 'From GHS 1500'
+            },
         ];
         
         await Service.deleteMany();
